@@ -1,4 +1,5 @@
 import initSqlJs from "sql.js";
+import { editSpotifyLibrary } from "./editLibrary";
 
 export async function uploadDb(databaseFiles) {
 	const backup = databaseFiles[0];
@@ -9,5 +10,9 @@ export async function uploadDb(databaseFiles) {
 
 	const db = new SQL.Database(data);
 
-	console.log(db.exec("SELECT * FROM Song WHERE likedAt > 1 ORDER BY likedAt"));
+	const likedSongs = db.exec(
+		"SELECT * FROM Song WHERE likedAt > 1 ORDER BY likedAt"
+	)[0].values;
+
+	editSpotifyLibrary(likedSongs);
 }
