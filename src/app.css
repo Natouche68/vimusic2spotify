@@ -7,7 +7,8 @@
 	--text-color: #fff;
 }
 
-button {
+button,
+input {
 	font-family: "Montserrat", sans-serif;
 	border: none;
 	outline: none;
